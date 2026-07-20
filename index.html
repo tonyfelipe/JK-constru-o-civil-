@@ -1,109 +1,51 @@
-<!DOCTYPE html>
+    color: var(--paper);
+  }<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>JK Construção Civil | Reformas e Projetos Arquitetônicos em SP</title>
+<!-- Script do Netlify Identity -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
 <meta name="description" content="JK Construção Civil realiza reformas em geral com leitura técnica e projeto arquitetônico. Atendimento em todo o estado de São Paulo e outras regiões, sob orçamento. Fale agora pelo WhatsApp.">
-<meta name="robots" content="index, follow">
-<meta name="author" content="JK Construção Civil">
-<link rel="canonical" href="https://www.jkconstrucaocivil.com.br/">
-
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="JK Construção Civil">
-<meta property="og:title" content="JK Construção Civil | Reformas e Projetos Arquitetônicos">
-<meta property="og:description" content="Reformas em geral com leitura técnica e projeto arquitetônico. Atendemos todo o estado de SP e outras regiões — faça seu orçamento.">
-<meta property="og:url" content="https://www.jkconstrucaocivil.com.br/">
-<meta property="og:locale" content="pt_BR">
-<meta property="og:image" content="https://www.jkconstrucaocivil.com.br/og-image.jpg">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="JK Construção Civil | Reformas e Projetos Arquitetônicos">
-<meta name="twitter:description" content="Reformas em geral com leitura técnica e projeto arquitetônico. Atendemos todo o estado de SP e outras regiões.">
-<meta name="twitter:image" content="https://www.jkconstrucaocivil.com.br/og-image.jpg">
-
-<!-- Security -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src fonts.gstatic.com; img-src 'self' data:; script-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="/android-192.png">
-<link rel="manifest" href="/site.webmanifest">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- ... (resto dos seus metas permanecem iguais) ... -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
-
-<!-- Schema.org structured data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "GeneralContractor",
-  "name": "JK Construção Civil",
-  "image": "https://www.jkconstrucaocivil.com.br/og-image.jpg",
-  "telephone": "+5511946861672",
-  "taxID": "56992990000146",
-  "areaServed": {
-    "@type": "State",
-    "name": "São Paulo"
-  },
-  "url": "https://www.jkconstrucaocivil.com.br/",
-  "priceRange": "Sob orçamento",
-  "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reformas em geral" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Leitura técnica" } },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Projeto arquitetônico" } }
-  ]
-}
-</script>
-
 <style>
-  /* ===== Tokens ===== */
-  :root {
-    --asphalt: #17181A;
-    --asphalt-2: #202226;
-    --concrete: #9A968D;
-    --blueprint: #2C4B73;
-    --blueprint-deep: #1B3252;
-    --safety: #F4B400;
-    --paper: #EDEAE2;
-    --paper-dim: #C9C6BC;
-    --danger: #C0392B;
+  /* Mantenha seu CSS aqui. Adicionei apenas este ajuste para a imagem de fundo */
+  .hero-bg { background-size: cover; background-position: center; transition: background 0.3s ease; }
+</style>
+</head>
+<body>
+  
+  <!-- Exemplo de como marcar seu H1 -->
+  <h1 data-cms="title">JK Construção Civil</h1>
+  
+  <!-- Exemplo da div que controlaremos via JS -->
+  <div class="hero-bg" data-cms="image" style="height: 500px;"></div>
 
-    --font-display: 'Oswald', 'Arial Narrow', sans-serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+  <!-- Seu código JS para buscar os dados -->
+  <script>
+    // Carrega o conteúdo do JSON e preenche os campos
+    fetch('/content.json')
+      .then(response => response.json())
+      .then(data => {
+        document.querySelector('[data-cms="title"]').innerText = data.title;
+        const hero = document.querySelector('.hero-bg');
+        if(data.image) { hero.style.backgroundImage = `url('${data.image}')`; }
+      });
 
-    --radius: 2px;
-    --gap: clamp(1rem, 3vw, 2rem);
-    --max-w: 1120px;
-  }
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  }
-
-  body {
-    margin: 0;
-    background: var(--asphalt);
-    color: var(--paper);
-    font-family: var(--font-body);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  h1, h2, h3, .display {
-    font-family: var(--font-display);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    line-height: 1.1;
-    margin: 0;
-    color: var(--paper);
-  }
+    // Script para gerenciar login e redirecionamento para o admin
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+        }
+      });
+    }
+  </script>
+</body>
+</html>
 
   a { color: var(--safety); text-decoration-thickness: 1px; }
   a:focus-visible, button:focus-visible {
