@@ -1,0 +1,16 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: "assets/img"
+public_folder: "/assets/img"
+collections:
+  - name: "config"
+    label: "Configurações"
+    files:
+      - file: "content.json"
+        label: "Conteúdo do Site"
+        name: "content"
+        fields:
+          - {label: "Título", name: "title", widget: "string"}
+          - {label: "Descrição", name: "description", widget: "text"}
+          - {label: "Imagem Hero", name: "image", widget: "image"}
